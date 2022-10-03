@@ -12,7 +12,7 @@ public class StudentToStudentResponseMapper {
     @Autowired
     private ModelMapper modelMapper;
 
-    public StudentResponse apply(Student domain){
+    public StudentResponse apply(Student domain) {
         return modelMapper.map(domain, StudentResponse.class);
     }
 

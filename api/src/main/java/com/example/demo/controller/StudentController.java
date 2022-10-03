@@ -18,7 +18,7 @@ public class StudentController {
 
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
-    public List<StudentResponse> listStudents(){
+    public List<StudentResponse> listStudents() {
         return listStudentsService.list();
     }
 

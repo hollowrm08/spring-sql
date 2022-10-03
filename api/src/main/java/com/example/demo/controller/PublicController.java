@@ -2,7 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.controller.request.StudentRequest;
 import com.example.demo.controller.request.TeacherRequest;
+import com.example.demo.controller.response.StudentResponse;
 import com.example.demo.controller.response.SubjectResponse;
+import com.example.demo.controller.response.TeacherResponse;
 import com.example.demo.service.ListSubjectsService;
 import com.example.demo.service.RegisterStudentService;
 import com.example.demo.service.RegisterTeacherService;
@@ -40,14 +42,14 @@ public class PublicController {
 
     @PostMapping("/register-student")
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerStudent(@RequestBody @Valid StudentRequest studentRequest){
-        registerStudentService.register(studentRequest);
+    public StudentResponse registerStudent(@RequestBody @Valid StudentRequest studentRequest){
+        return registerStudentService.register(studentRequest);
     }
 
     @PostMapping("/register-teacher")
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerTeacher(@RequestBody @Valid TeacherRequest teacherRequest){
-        registerTeacherService.register(teacherRequest);
+    public TeacherResponse registerTeacher(@RequestBody @Valid TeacherRequest teacherRequest){
+        return registerTeacherService.register(teacherRequest);
     }
 
     //Todo: Throw a better exception when login can't be done

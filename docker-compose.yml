@@ -5,20 +5,21 @@ services:
         container_name: mysqldb
         image: mysql:5.7
         environment:
-            - MYSQL_DATABASE=test
-            - MYSQL_ROOT_PASSWORD=root
-            - MYSQL_ROOT=root
-            - MYSQL_PASSWORD=root
+          - MYSQL_DATABASE=test
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_ROOT=root
+#          - MYSQL_USER=root
+#          - MYSQL_PASSWORD=root
+        command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
         ports:
             - '3307:3306'
         volumes:
 #          - "./database/config/mycustom.cnf:/etc/mysql/conf.d/custom.cnf"
-          - teste3-volume-mysql:/var/lib/mysql
+          - "teste3-volume-mysql:/var/lib/mysql"
           - "./database/init/script-creates.sql:/docker-entrypoint-initdb.d/1.sql"
-          - "./database/init/script-inserts.sql:/docker-entrypoint-initdb.d/2.sql"
+#          - "./database/init/script-inserts.sql:/docker-entrypoint-initdb.d/2.sql"
         networks:
           - teste-bridge
-        command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
         healthcheck:
           test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
           timeout: 20s

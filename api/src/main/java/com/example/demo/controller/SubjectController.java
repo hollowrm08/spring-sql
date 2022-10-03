@@ -1,5 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.controller.request.SubjectRequest;
+import com.example.demo.controller.response.SubjectResponse;
+import com.example.demo.service.RegisterSubjectService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,6 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/subject")
 public class SubjectController {
 
-    //Todo: Delete?
+    @Autowired
+    private RegisterSubjectService registerSubjectService;
+
+    @PostMapping
+    public SubjectResponse registerSubject(@RequestBody SubjectRequest request) {
+        return registerSubjectService.register(request);
+    }
 
 }
