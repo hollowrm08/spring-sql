@@ -1,0 +1,41 @@
+<div>
+  <h4>Cadastro</h4>
+  <form class="form sign-up-form" [formGroup]="newUserForm" (submit)="signUp()">
+
+    <div class="form-group">
+      <input type="text" placeholder="Nome completo" formControlName="fullname">
+    </div>
+
+    <div class="form-group">
+      <input type="text" placeholder="E-mail" formControlName="email">
+    </div>
+
+    <div class="form-group">
+      <input type="text" placeholder="Nome usuário" formControlName="username">
+    </div>
+
+    <div class="form-group">
+      <input type="password" placeholder="Senha" formControlName="password">
+    </div>
+
+    <div class="form-group">
+      <input type="date" formControlName="birthday">
+    </div>
+
+    <div class="form-group">
+      <input type="radio" name="type-user" value="Estudante" id="student-radio-btn">
+      <label for="student-radio-btn">Estudante</label>
+      <input type="radio" name="type-user" value="Professor" id="professor-radio-btn">
+      <label for="professor-radio-btn">Professor</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" placeholder="Matrícula" formControlName="enrollment">
+    </div>
+
+    <div class="form-group">
+      <input type="text" placeholder="Siape" formControlName="siape">
+    </div>
+
+  </form>
+</div>
