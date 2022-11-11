@@ -6,6 +6,7 @@ import { OverviewComponent } from './overview.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FieldAlertModule } from '../components/field-alert/field-alert.module';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     OverviewRoutingModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    FieldAlertModule
+  ],
+  exports: [OverviewComponent]
 })
 export class OverviewModule { }

@@ -1,41 +1,102 @@
 <div>
   <h4>Cadastro</h4>
   <form class="form sign-up-form" [formGroup]="newUserForm" (submit)="signUp()">
-
     <div class="form-group">
-      <input type="text" placeholder="Nome completo" formControlName="fullname">
+      <input
+        type="text"
+        placeholder="Nome completo"
+        formControlName="name"
+      />
+      <app-field-alert
+        alertMessage="Nome é obrigatório"
+        *ngIf="
+          newUserForm.get('name')?.errors?.required &&
+          newUserForm.get('name')?.touched
+        "
+      ></app-field-alert>
     </div>
 
     <div class="form-group">
-      <input type="text" placeholder="E-mail" formControlName="email">
+      <input type="text" placeholder="E-mail" formControlName="email" />
+      <app-field-alert
+        alertMessage="E-mail obrigatório"
+        *ngIf="
+          newUserForm.get('email')?.errors?.required &&
+          newUserForm.get('email')?.touched
+        "
+      ></app-field-alert>
+      <app-field-alert
+        alertMessage="E-mail inválido"
+        *ngIf="
+          newUserForm.get('email')?.errors?.email &&
+          newUserForm.get('email')?.touched
+        "
+      ></app-field-alert>
     </div>
 
     <div class="form-group">
-      <input type="text" placeholder="Nome usuário" formControlName="username">
+      <input type="text" placeholder="Nome usuário" formControlName="login" />
+      <app-field-alert
+        alertMessage="Usuário inválido"
+        *ngIf="
+          newUserForm.get('login')?.errors?.required &&
+          newUserForm.get('login')?.touched
+        "
+      ></app-field-alert>
     </div>
 
     <div class="form-group">
-      <input type="password" placeholder="Senha" formControlName="password">
+      <input type="password" placeholder="Senha" formControlName="password" />
+      <app-field-alert
+        alertMessage="Senha deve conter no mínimo 6 caracteres"
+        *ngIf="
+          newUserForm.get('password')?.errors &&
+          newUserForm.get('password')?.touched
+        "
+      ></app-field-alert>
     </div>
 
-    <div class="form-group">
-      <input type="date" formControlName="birthday">
-    </div>
+    <!-- <div class="form-group">
+      <input type="date" formControlName="birthday" />
+    </div> -->
 
-    <div class="form-group">
-      <input type="radio" name="type-user" value="Estudante" id="student-radio-btn">
+    <!-- <div class="form-group">
+      <input
+        type="radio"
+        name="type-user"
+        value="Estudante"
+        id="student-radio-btn"
+      />
       <label for="student-radio-btn">Estudante</label>
-      <input type="radio" name="type-user" value="Professor" id="professor-radio-btn">
+      <input
+        type="radio"
+        name="type-user"
+        value="Professor"
+        id="professor-radio-btn"
+      />
       <label for="professor-radio-btn">Professor</label>
-    </div>
+    </div> -->
 
     <div class="form-group">
-      <input type="text" placeholder="Matrícula" formControlName="enrollment">
+      <input type="text" placeholder="Matrícula" formControlName="enrollment" />
+      <app-field-alert
+        alertMessage="Número de matrícula é obrigatório para estudantes"
+        *ngIf="
+          newUserForm.get('enrollment')?.errors?.required &&
+          newUserForm.get('enrollment')?.touched
+        "
+      ></app-field-alert>
     </div>
 
-    <div class="form-group">
-      <input type="text" placeholder="Siape" formControlName="siape">
-    </div>
+    <!-- <div class="form-group">
+      <input type="text" placeholder="Siape" formControlName="siape" />
+    </div> -->
 
+    <button
+      class="button-submit"
+      [disabled]="newUserForm.invalid"
+    >
+      Cadastrar
+    </button>
   </form>
 </div>
