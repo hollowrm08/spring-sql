@@ -37,7 +37,9 @@ public class JWTConfiguration extends WebSecurityConfigurerAdapter {
             .addFilter(new JWTAuthenticateFilter(authenticationManager()))
             .addFilter(new JWTValidateFilter(authenticationManager()))
             .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .cors();
 
         //Todo: Enable csrf later?
     }
