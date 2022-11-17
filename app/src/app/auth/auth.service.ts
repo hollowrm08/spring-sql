@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './models/user';
 import { tap } from 'rxjs/operators';
-import { TokenService } from './token.service';
+import { TokenService } from './token/token.service';
+import { UserService } from './user/user.service';
 
 interface bodyToken {
   token: string;
@@ -19,7 +20,7 @@ export class AuthService {
 
   constructor(
     private httpClient: HttpClient,
-    private tokenService: TokenService
+    private userService: UserService
   ) { }
 
 
@@ -28,14 +29,9 @@ export class AuthService {
       .pipe(
         tap( (res) => {
           const responseBody = res.body as bodyToken;
-          this.saveToken(responseBody.token ?? '');
-          console.log(responseBody.token);
+          this.userService.saveToken(responseBody.token ?? '');
         })
       )
-  }
-
-  public saveToken(token: string): void {
-    this.tokenService.saveToken(token);
   }
 
 }

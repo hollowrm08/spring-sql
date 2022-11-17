@@ -7,7 +7,7 @@ export class TokenService {
 
   private KEY = 'TOKEN';
 
-  public returnToken(): string {
+  public getToken(): string {
     return localStorage.getItem(this.KEY) ?? '';
   }
 
@@ -19,8 +19,8 @@ export class TokenService {
     localStorage.removeItem(this.KEY);
   }
 
-  public possuiToken(): boolean {
-    return !!this.returnToken();
+  public hasToken(): boolean {
+    return !!this.getToken();
   }
 
 }

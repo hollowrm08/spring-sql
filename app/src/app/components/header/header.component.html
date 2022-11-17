@@ -1,8 +1,20 @@
 <header class="main-header">
   <nav class="nav-bar">
+    <div *ngIf="user$ | async as user">
+      <div *ngIf="user.login; else loginBar">
+        <ul class="nav-links">
+          <li>Bem vindo {{user.login}}!</li>
+          <li class="logoutButton" (click)="logout()">Logout</li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <ng-template #loginBar>
     <ul class="nav-links">
       <li><a [routerLink]="['/overview/sign-up']">Cadastre-se</a></li>
       <li><a [routerLink]="['/overview/login']">Entrar</a></li>
     </ul>
-  </nav>
+  </ng-template>
+
 <header>
