@@ -25,9 +25,9 @@ public class StudentRequest {
     @NotEmpty
     private String password;
 
-    private String bio;
+    private String bio = "Hello world!";
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy/MM/dd")
     private LocalDate birthday;
 
     @NotEmpty

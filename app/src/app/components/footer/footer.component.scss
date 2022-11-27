@@ -1,0 +1,25 @@
+@import "../../../vars.scss";
+
+.main-footer {
+  margin: 2% $margin-sides;
+  padding: 15px;
+  background-color: $primary-color;;
+
+  .footer-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+    .email {
+      color: blue;
+      cursor: pointer;
+    }
+
+    .email:hover {
+      color: red;
+    }
+
+  }
+}

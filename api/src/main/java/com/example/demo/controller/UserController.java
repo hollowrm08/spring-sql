@@ -1,12 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.controller.response.UserResponse;
+import com.example.demo.service.DeleteByLoginService;
 import com.example.demo.service.FindUserByLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -15,9 +13,17 @@ public class UserController {
     @Autowired
     private FindUserByLoginService findUserByLoginService;
 
+    @Autowired
+    private DeleteByLoginService deleteByLoginService;
+
     @GetMapping("{login}")
-    public UserResponse findUserByLogin(@PathVariable String login){
+    public UserResponse findUserByLogin(@PathVariable String login) {
         return findUserByLoginService.findUserByLogin(login);
+    }
+
+    @DeleteMapping("{login}")
+    public void deleteByLogin(@PathVariable String login) {
+        deleteByLoginService.deleteUser(login);
     }
 
 }

@@ -1,3 +1,4 @@
+import { DatePipe, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,6 +13,7 @@ import { RegisterUserService } from './register-user.service';
 export class SignUpComponent implements OnInit {
 
   newUserForm!: FormGroup;
+  datepipe: DatePipe = new DatePipe('en-US');
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,6 +28,7 @@ export class SignUpComponent implements OnInit {
       email: ['', [Validators.required, Validators.email] ],
       login: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      birthday: ['', Validators.required],
       enrollment: ['', [Validators.required]]
     });
   }
@@ -34,10 +37,9 @@ export class SignUpComponent implements OnInit {
     //Todo: refactor for teacher
     if (this.newUserForm.valid) {
       const newUser = this.newUserForm.getRawValue() as Student;
-      newUser.birthday = '09/09/2002';
-      newUser.bio = 'Funciona?' //Todo: refactor
+      newUser.birthday = formatDate(newUser.birthday, 'yyyy/MM/dd', 'en-US');
       this.registerUserService.signUpNewStudent(newUser).subscribe(() => {
-        this.router.navigate(['']);
+        this.router.navigate(['/overview/login']);
       }, (error) => {
         console.log(`Erro ao registar estudante: ${error}`);
         console.log(error);
