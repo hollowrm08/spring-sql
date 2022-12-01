@@ -2,6 +2,7 @@ package com.example.demo.controller.response;
 
 import com.example.demo.domain.Privacy;
 import com.example.demo.domain.TypeAuthor;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ public class TopicResponse {
 
     private Privacy privacy;
 
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
     private LocalDateTime dateCreation;
 
     private TypeAuthor typeAuthor;

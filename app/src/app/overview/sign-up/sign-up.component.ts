@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/auth/models/student';
 import { RegisterUserService } from './register-user.service';
+import { VerifyUserFieldsService } from './verify-user-fields.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,7 +19,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private registerUserService: RegisterUserService
+    private registerUserService: RegisterUserService,
+    private verifyUserFieldsSevice: VerifyUserFieldsService
   ) { }
 
   //Todo: Implementar logica de demais campos
@@ -26,7 +28,7 @@ export class SignUpComponent implements OnInit {
     this.newUserForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email] ],
-      login: ['', [Validators.required]],
+      login: ['', [Validators.required], [this.verifyUserFieldsSevice.verifyLoginUsage()]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       birthday: ['', Validators.required],
       enrollment: ['', [Validators.required]]

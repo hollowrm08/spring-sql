@@ -5,9 +5,11 @@ import com.example.demo.controller.request.TeacherRequest;
 import com.example.demo.controller.response.StudentResponse;
 import com.example.demo.controller.response.SubjectResponse;
 import com.example.demo.controller.response.TeacherResponse;
+import com.example.demo.controller.response.VerifyLoginUsageResponse;
 import com.example.demo.service.ListSubjectsService;
 import com.example.demo.service.RegisterStudentService;
 import com.example.demo.service.RegisterTeacherService;
+import com.example.demo.service.VerifyLoginUsageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +21,6 @@ import java.util.List;
 @RequestMapping("/public")
 public class PublicController {
 
-    /*
-     * Todo: implement endpoints
-     * create register teacher
-     * delete user?
-     * */
-
     @Autowired
     private ListSubjectsService listSubjectsService;
 
@@ -33,6 +29,9 @@ public class PublicController {
 
     @Autowired
     private RegisterTeacherService registerTeacherService;
+
+    @Autowired
+    private VerifyLoginUsageService verifyLoginUsageService;
 
     @GetMapping("/list-subjects")
     @ResponseStatus(HttpStatus.OK)
@@ -52,6 +51,10 @@ public class PublicController {
         return registerTeacherService.register(teacherRequest);
     }
 
-    //Todo: Throw a better exception when login can't be done
+    @GetMapping("/verify-login-usage/{login}")
+    public VerifyLoginUsageResponse verifyLoginUsage(@PathVariable String login) {
+        return verifyLoginUsageService.verify(login);
+    }
+
 
 }

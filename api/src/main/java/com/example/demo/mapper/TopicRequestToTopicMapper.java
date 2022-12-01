@@ -1,19 +1,19 @@
 package com.example.demo.mapper;
 
-import com.example.demo.controller.request.TeacherRequest;
-import com.example.demo.domain.Teacher;
+import com.example.demo.controller.request.TopicRequest;
+import com.example.demo.domain.Topic;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TeacherRequestToTeacherMapper {
+public class TopicRequestToTopicMapper {
 
     @Autowired
     private ModelMapper modelMapper;
 
-    public Teacher apply(TeacherRequest request) {
-        return modelMapper.map(request, Teacher.class);
+    public Topic apply(TopicRequest request) {
+        return modelMapper.map(request, Topic.class);
     }
 
 }

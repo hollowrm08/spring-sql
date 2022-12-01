@@ -1,10 +1,15 @@
 package com.example.demo.controller;
 
 import com.example.demo.controller.response.UserResponse;
+import com.example.demo.controller.response.VerifyLoginUsageResponse;
 import com.example.demo.service.DeleteByLoginService;
 import com.example.demo.service.FindUserByLoginService;
+import com.example.demo.service.VerifyLoginUsageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
 @RestController
 @RequestMapping("/user")

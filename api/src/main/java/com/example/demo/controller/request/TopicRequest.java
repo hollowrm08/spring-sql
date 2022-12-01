@@ -23,11 +23,8 @@ public class TopicRequest {
     private String pathImage;
 
     @NotEmpty
-    private String subject;
+    private String subjectAbbreviation;
     //Todo: Confirm
 
-    @NotEmpty
-    private String loginAuthor;
-    //Todo: Confirm
 
 }
