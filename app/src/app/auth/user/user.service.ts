@@ -39,7 +39,7 @@ export class UserService {
     this.userSubject.next({});
   }
 
-  public saveToken(token: string): void {
+  public saveTokenAndDecodeUser(token: string): void {
     this.tokenService.saveToken(token);
     this.decodeJWT();
   }

@@ -1,9 +1,12 @@
-FROM node:14.17.0-alpine as build-step
-RUN mkdir -p /app
+FROM node:14 as node_angular
 WORKDIR /app
 COPY package.json /app
-RUN npm install
-COPY . /app
-RUN npm run build --prod
-# tentar docker-multistage
-# reescrever
+RUN npm install --silent
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+VOLUME /var/cache/nginx
+COPY --from=node_angular app/dist/app /usr/share/nginx/html
+COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
+

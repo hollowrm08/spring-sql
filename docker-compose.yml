@@ -2,47 +2,62 @@ version: '3.9'
 
 services:
     docker-mysql:
-        container_name: mysqldb
-        image: mysql:5.7
-        environment:
-          - MYSQL_DATABASE=test
-          - MYSQL_ROOT_PASSWORD=root
-          - MYSQL_ROOT=root
-#          - MYSQL_USER=root
-#          - MYSQL_PASSWORD=root
-        command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
-        ports:
-            - '3307:3306'
-        volumes:
-#          - "./database/config/mycustom.cnf:/etc/mysql/conf.d/custom.cnf"
-          - "teste3-volume-mysql:/var/lib/mysql"
-          - "./database/init/script-creates.sql:/docker-entrypoint-initdb.d/1.sql"
-#          - "./database/init/script-inserts.sql:/docker-entrypoint-initdb.d/2.sql"
-        networks:
-          - teste-bridge
-        healthcheck:
-          test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-          timeout: 20s
-          retries: 10
+      container_name: mysqldb
+      image: mysql:5.7
+      environment:
+        - MYSQL_DATABASE=test
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_ROOT=root
+#        - MYSQL_USER=root
+#        - MYSQL_PASSWORD=root
+      command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+      ports:
+          - '3307:3306'
+      volumes:
+#        - "./database/config/mycustom.cnf:/etc/mysql/conf.d/custom.cnf"
+        - "askin-database-volume:/var/lib/mysql"
+        - "./database/init/script-creates.sql:/docker-entrypoint-initdb.d/1.sql"
+#        - "./database/init/script-inserts.sql:/docker-entrypoint-initdb.d/2.sql"
+      networks:
+        - askin-bridge
+      healthcheck:
+        test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+        timeout: 20s
+        retries: 10
 
     api:        
-        container_name: spring-api
-        image: spring-sql_api
-        restart: always
-        build: ./api/
-        depends_on:
-          docker-mysql:
-            condition: service_healthy
-        ports: 
-            - '8888:8080'
-        environment:
-            SPRING_DATASOURCE_URL: "jdbc:mysql://docker-mysql:3306/test?autoReconnect=true&useSSL=false"
-        networks:
-          - teste-bridge
+      container_name: spring-api
+      image: spring-sql_api
+      restart: always
+      build: ./api/
+      depends_on:
+        docker-mysql:
+          condition: service_healthy
+      ports: 
+          - '8888:8080'
+      environment:
+          SPRING_DATASOURCE_URL: "jdbc:mysql://docker-mysql:3306/test?autoReconnect=true&useSSL=false"
+      networks:
+        - askin-bridge
+      # Todo: Rewrite
+      # healthcheck:
+      #   test: curl -m 5 --silent --fail --request GET http://localhost:8888/actuator/health | jq --exit-status -n 'inputs | if has("status") then .status=="UP" else false end' > /dev/null || exit 1
+      #   interval: 10s
+      #   timeout: 2s
+      #   retries: 10
+
+    app: 
+      image: app-angular
+      build: ./app/
+      # depends_on:
+      #   api:
+      #     condition: service_healthy
+      ports: 
+        - '4300:80'
 
 volumes:
-  teste3-volume-mysql:
+  askin-database-volume:
 
 networks:
-  teste-bridge:
+  askin-bridge:
     driver: bridge

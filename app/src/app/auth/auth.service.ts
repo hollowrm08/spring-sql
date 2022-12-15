@@ -3,20 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './models/user';
 import { tap } from 'rxjs/operators';
-import { TokenService } from './token/token.service';
 import { UserService } from './user/user.service';
+import { environment } from 'src/environments/environment';
+
+const API = environment.baseApiUrl;
 
 interface bodyToken {
   token: string;
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  private urlLogin = 'http://localhost:8888/login';
 
   constructor(
     private httpClient: HttpClient,
@@ -25,11 +24,11 @@ export class AuthService {
 
 
   public auth(user: User): Observable< HttpResponse<any> > {
-    return this.httpClient.post(this.urlLogin, user, {observe: 'response'})
+    return this.httpClient.post(`${API}/login`, user, {observe: 'response'})
       .pipe(
         tap( (res) => {
           const responseBody = res.body as bodyToken;
-          this.userService.saveToken(responseBody.token ?? '');
+          this.userService.saveTokenAndDecodeUser(responseBody.token ?? '');
         })
       )
   }
