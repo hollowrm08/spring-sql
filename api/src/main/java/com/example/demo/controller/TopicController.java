@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.controller.request.TopicRequest;
 import com.example.demo.controller.response.TopicResponse;
 import com.example.demo.service.CreateTopicService;
+import com.example.demo.service.DeleteTopicByIdService;
 import com.example.demo.service.ListTopicsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,9 @@ public class TopicController {
     @Autowired
     private CreateTopicService createTopicService;
 
+    @Autowired
+    private DeleteTopicByIdService deleteTopicByIdService;
+
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     public List<TopicResponse> list(){
@@ -31,6 +35,12 @@ public class TopicController {
     @ResponseStatus(HttpStatus.CREATED)
     public TopicResponse create(@RequestBody TopicRequest request) {
         return createTopicService.createTopic(request);
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable Integer id) {
+        deleteTopicByIdService.deleteById(id);
     }
 
 }

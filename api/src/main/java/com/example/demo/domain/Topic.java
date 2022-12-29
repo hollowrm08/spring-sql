@@ -25,7 +25,7 @@ public class Topic {
     private Privacy privacy;
 
     @Column(name = "t_creation")
-    private LocalDateTime dateCreation;
+    private LocalDateTime dateOfCreation;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "s_type_author")

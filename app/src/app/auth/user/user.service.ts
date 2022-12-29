@@ -44,4 +44,8 @@ export class UserService {
     this.decodeJWT();
   }
 
+  public hasUser() : boolean {
+    return this.tokenService.hasToken();
+  }
+
 }

@@ -19,7 +19,7 @@ public class TopicResponse {
     private Privacy privacy;
 
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-    private LocalDateTime dateCreation;
+    private LocalDateTime dateOfCreation;
 
     private TypeAuthor typeAuthor;
 

@@ -52,7 +52,7 @@ public class CreateTopicService {
             throw new EntryNotFoundException(String.format("O usuário '%s' não pode ser encontrado", loginUser));
 
         topic.setAuthor(userOptional.get());
-        topic.setDateCreation(LocalDateTime.now(ZoneId.of("America/Sao_Paulo"))); //Todo: fix
+        topic.setDateOfCreation(LocalDateTime.now(ZoneId.of("America/Sao_Paulo"))); //Todo: fix
 
         topic = topicRepository.save(topic);
         return responseMapper.apply(topic);

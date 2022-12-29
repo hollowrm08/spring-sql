@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterModule } from './components/footer/footer.module';
 import { HeaderModule } from './components/header/header.module';
+import { AuthModule } from './auth/auth.module';
+import { CardModule } from './components/card/card.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { HeaderModule } from './components/header/header.module';
     AppRoutingModule,
     HeaderModule,
     FooterModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,15 @@
+<div>
+  <div class="home-timeline-content" *ngFor="let topic of topics">
+    <app-card>
+      <div>
+        <h4>
+          <b>{{ topic.author.name }}: </b>
+          <i>{{ topic.author.email }}</i>
+        </h4>
+        <p>{{ topic.subject.name }}</p>
+        <p>{{ topic.content }}</p>
+        <p>{{ topic.dateOfCreation }}</p>
+      </div>
+    </app-card>
+  </div>
+</div>

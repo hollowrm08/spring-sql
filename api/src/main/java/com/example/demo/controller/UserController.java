@@ -1,15 +1,12 @@
 package com.example.demo.controller;
 
 import com.example.demo.controller.response.UserResponse;
-import com.example.demo.controller.response.VerifyLoginUsageResponse;
 import com.example.demo.service.DeleteByLoginService;
 import com.example.demo.service.FindUserByLoginService;
-import com.example.demo.service.VerifyLoginUsageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
 
 @RestController
 @RequestMapping("/user")
@@ -22,11 +19,13 @@ public class UserController {
     private DeleteByLoginService deleteByLoginService;
 
     @GetMapping("{login}")
+    @ResponseStatus(HttpStatus.OK)
     public UserResponse findUserByLogin(@PathVariable String login) {
         return findUserByLoginService.findUserByLogin(login);
     }
 
     @DeleteMapping("{login}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteByLogin(@PathVariable String login) {
         deleteByLoginService.deleteUser(login);
     }

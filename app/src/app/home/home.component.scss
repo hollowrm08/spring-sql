@@ -1,0 +1,40 @@
+@import '../../vars.scss';
+
+.home-container {
+  padding: 15px;
+  margin: 2% $margin-sides;
+  background-color: $primary-color;
+  border: 1px solid black;
+  display: flex;
+  justify-content: flex-start;
+
+  .home-navigation-bar-options {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      margin: 0 10px;
+      padding: 5px;
+    }
+  }
+
+}
+
+.home-timeline {
+  min-width: 60%;
+  text-align: center;
+  margin: 1px solid black;
+
+  .home-timeline-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .home-timeline-content {
+    text-align: left;
+  }
+}
+
+.home-navigation-bar {
+  min-width: 15%;
+}
