@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegisterSubjectService {
+public class CreateSubjectService {
 
     @Autowired
     private SubjectRequestToSubjectMapper requestMapper;
@@ -21,7 +21,7 @@ public class RegisterSubjectService {
     @Autowired
     private SubjectToSubjectResponseMapper responseMapper;
 
-    public SubjectResponse register(SubjectRequest request) {
+    public SubjectResponse create(SubjectRequest request) {
         Subject subject = requestMapper.apply(request);
         subject = repository.save(subject);
 

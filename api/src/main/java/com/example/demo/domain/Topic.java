@@ -24,9 +24,8 @@ public class Topic {
     @Column(name = "s_privacy")
     private Privacy privacy;
 
-    @Column(name = "s_creation")
-    private LocalDateTime dateCreation;
-    //Todo: Confirm Object
+    @Column(name = "t_creation")
+    private LocalDateTime dateOfCreation;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "s_type_author")

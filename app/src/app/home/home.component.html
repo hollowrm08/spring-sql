@@ -1,3 +1,26 @@
-<div class="container">
-  Home aqui
+<div class="home-container" *ngIf="topics$ | async as topics">
+  <div class="home-navigation-bar">
+    <ul class="home-navigation-bar-options nav-options-list">
+      <li><a [routerLink]="['/home']">
+        Home
+      </a></li>
+      <li><a [routerLink]="['/home']">
+        Em breve
+      </a></li>
+    </ul>
+  </div>
+  <div class="home-timeline">
+    <span class="home-timeline-title">
+      O aconteceu perto de você
+    </span>
+    <div class="home-timeline-content" *ngIf="topics.length; else emptyList">
+      <app-topic-list
+        [topics]="topics"
+      ></app-topic-list>
+    </div>
+  </div>
 </div>
+
+<ng-template #emptyList>
+  <h4>Nada no momento para ver...</h4>
+</ng-template>

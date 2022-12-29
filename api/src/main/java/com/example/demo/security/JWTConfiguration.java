@@ -29,7 +29,7 @@ public class JWTConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf()
             .disable()
             .authorizeRequests()
-            .antMatchers("/public/**", "/login")
+            .antMatchers("/public/**", "/login", "/actuator/**")
             .permitAll()
             .anyRequest()
             .authenticated()

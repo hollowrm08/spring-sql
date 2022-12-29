@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_student")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Student extends User{
+public class Student extends User {
 
     @Column(name = "s_enrollment")
     private String enrollment;

@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.controller.response.TopicResponse;
 import com.example.demo.domain.Topic;
 import com.example.demo.domain.User;
+import com.example.demo.exception.EntryNotFoundException;
 import com.example.demo.mapper.TopicToPublicTopicResponse;
 import com.example.demo.repository.TopicRepository;
 import com.example.demo.repository.UserRepository;
@@ -26,22 +27,19 @@ public class ListTopicsService {
     @Autowired
     private TopicToPublicTopicResponse publicMapper;
 
-    public List<TopicResponse> listTopics(){
+    public List<TopicResponse> listTopics() {
         String loginUser = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Optional<User> usuario = userRepository.findByLogin(loginUser);
-
-        //Todo: Verify if !usuario.isEmpty()
+        if (usuario.isEmpty())
+            throw new EntryNotFoundException("O usuário '%s' não pode ser encontrado");
 
         List<Topic> listTopics = repository.findAll();
         return listTopics.stream()
-                .filter(t -> !t.getAuthor().getId().equals(usuario.get().getId())) //must not see own topics
                 //verify class
                 //verify teacher or student (privacity)
                 .map(t -> publicMapper.apply(t))
                 .collect(Collectors.toList());
-
-        //Todo: The user must not see his own topics calling list all
     }
 
 }

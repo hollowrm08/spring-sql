@@ -12,7 +12,7 @@ public class TeacherRequestToTeacherMapper {
     @Autowired
     private ModelMapper modelMapper;
 
-    public Teacher apply(TeacherRequest request){
+    public Teacher apply(TeacherRequest request) {
         return modelMapper.map(request, Teacher.class);
     }
 

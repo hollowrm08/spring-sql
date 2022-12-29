@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeGuard } from './home/home.guard';
+import { OverviewGuard } from './overview/overview.guard';
 
 const routes: Routes = [
   {
@@ -10,12 +12,14 @@ const routes: Routes = [
   {
     path: 'overview',
     loadChildren: () =>
-      import('./overview/overview.module').then((m) => m.OverviewModule)
+      import('./overview/overview.module').then((m) => m.OverviewModule),
+    canLoad: [OverviewGuard]
   },
   {
     path: 'home',
     loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomeModule)
+      import('./home/home.module').then((m) => m.HomeModule),
+    canLoad: [HomeGuard]
   }
 ];
 

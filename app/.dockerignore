@@ -1,0 +1,9 @@
+**/.vscode
+**/docker-compose*
+**/Dockerfile*
+**/node_modules
+LICENSE
+README.md
+**/dist
+**/e2e
+**/server

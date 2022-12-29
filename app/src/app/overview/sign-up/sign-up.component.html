@@ -43,6 +43,13 @@
           newUserForm.get('login')?.touched
         "
       ></app-field-alert>
+      <app-field-alert
+        alertMessage="Usuário já está em uso"
+        *ngIf="
+          newUserForm.get('login')?.errors?.unavailable &&
+          newUserForm.get('login')?.touched
+        "
+      ></app-field-alert>
     </div>
 
     <div class="form-group">
