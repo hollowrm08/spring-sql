@@ -10,6 +10,7 @@ import com.example.demo.service.ListSubjectsService;
 import com.example.demo.service.RegisterStudentService;
 import com.example.demo.service.RegisterTeacherService;
 import com.example.demo.service.VerifyLoginUsageService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -35,23 +36,28 @@ public class PublicController {
 
     @GetMapping("/list-subjects")
     @ResponseStatus(HttpStatus.OK)
-    private List<SubjectResponse> listSubjects(){
+    @Operation(summary = "List all subjects")
+    private List<SubjectResponse> listSubjects() {
         return listSubjectsService.listSubjects();
     }
 
     @PostMapping("/register-student")
     @ResponseStatus(HttpStatus.CREATED)
-    public StudentResponse registerStudent(@RequestBody @Valid StudentRequest studentRequest){
+    @Operation(summary = "Register a new student")
+    public StudentResponse registerStudent(@RequestBody @Valid StudentRequest studentRequest) {
         return registerStudentService.register(studentRequest);
     }
 
     @PostMapping("/register-teacher")
     @ResponseStatus(HttpStatus.CREATED)
-    public TeacherResponse registerTeacher(@RequestBody @Valid TeacherRequest teacherRequest){
+    @Operation(summary = "Register a new teacher")
+    public TeacherResponse registerTeacher(@RequestBody @Valid TeacherRequest teacherRequest) {
         return registerTeacherService.register(teacherRequest);
     }
 
     @GetMapping("/verify-login-usage/{login}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Verify if a login is already in use")
     public VerifyLoginUsageResponse verifyLoginUsage(@PathVariable String login) {
         return verifyLoginUsageService.verify(login);
     }

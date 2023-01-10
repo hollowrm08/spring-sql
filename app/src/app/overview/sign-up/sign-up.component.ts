@@ -13,6 +13,7 @@ import { VerifyUserFieldsService } from './verify-user-fields.service';
 })
 export class SignUpComponent implements OnInit {
 
+  typeUser = "S";
   newUserForm!: FormGroup;
   datepipe: DatePipe = new DatePipe('en-US');
 

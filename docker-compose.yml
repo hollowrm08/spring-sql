@@ -25,7 +25,7 @@ services:
 
     api:        
       container_name: spring-api
-      image: spring-sql_api
+      image: askin-api
       restart: always
       build: ./api/
       depends_on:

@@ -2,8 +2,10 @@
   <h4>Cadastro</h4>
   <form class="form sign-up-form" [formGroup]="newUserForm" (submit)="signUp()">
     <div class="form-group">
+      <label for="name"> Nome Completo </label>
       <input
         type="text"
+        id="name"
         placeholder="Nome completo"
         formControlName="name"
       />
@@ -17,7 +19,13 @@
     </div>
 
     <div class="form-group">
-      <input type="text" placeholder="E-mail" formControlName="email" />
+      <label for="email"> E-mail </label>
+      <input
+        type="text"
+        id="email"
+        placeholder="E-mail"
+        formControlName="email"
+      />
       <app-field-alert
         alertMessage="E-mail obrigatório"
         *ngIf="
@@ -35,7 +43,13 @@
     </div>
 
     <div class="form-group">
-      <input type="text" placeholder="Nome usuário" formControlName="login" />
+      <label for="login"> Nome usuário </label>
+      <input
+        type="text"
+        id="login"
+        placeholder="Nome usuário"
+        formControlName="login"
+      />
       <app-field-alert
         alertMessage="Usuário inválido"
         *ngIf="
@@ -53,7 +67,13 @@
     </div>
 
     <div class="form-group">
-      <input type="password" placeholder="Senha" formControlName="password" />
+      <label for="password"> Senha </label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Senha"
+        formControlName="password"
+      />
       <app-field-alert
         alertMessage="Senha deve conter no mínimo 6 caracteres"
         *ngIf="
@@ -64,7 +84,12 @@
     </div>
 
     <div class="form-group">
-      <input type="date" formControlName="birthday" />
+      <label for="birthday"> Dia de Nascimento </label>
+      <input
+        type="date"
+        id="birthday"
+        formControlName="birthday"
+      />
     </div>
 
     <!-- <div class="form-group">
@@ -84,8 +109,14 @@
       <label for="professor-radio-btn">Professor</label>
     </div> -->
 
-    <div class="form-group">
-      <input type="text" placeholder="Matrícula" formControlName="enrollment" />
+    <div class="form-group" *ngIf="typeUser=='S'">
+      <label for="enrollment"> Matrícula </label>
+      <input
+        type="text"
+        id="enrollment"
+        placeholder="Matrícula"
+        formControlName="enrollment"
+      />
       <app-field-alert
         alertMessage="Número de matrícula é obrigatório para estudantes"
         *ngIf="
@@ -95,9 +126,15 @@
       ></app-field-alert>
     </div>
 
-    <!-- <div class="form-group">
-      <input type="text" placeholder="Siape" formControlName="siape" />
-    </div> -->
+    <div class="form-group" *ngIf="typeUser=='T'">
+      <label for="siape"> Siape </label>
+      <input
+        type="text"
+        id="siape"
+        placeholder="Siape"
+        formControlName="siape"
+      />
+    </div>
 
     <button
       class="button-submit"

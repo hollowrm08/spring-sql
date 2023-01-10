@@ -8,11 +8,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 @EnableWebSecurity
 public class JWTConfiguration extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
+    private final String[] baseMatchers = {"/public/**", "/login", "/actuator/**"};
+    private final String[] swaggerMatchers = {"/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**"};
 
     public JWTConfiguration(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
@@ -29,7 +34,9 @@ public class JWTConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf()
             .disable()
             .authorizeRequests()
-            .antMatchers("/public/**", "/login", "/actuator/**")
+            .antMatchers(
+                Stream.concat(Arrays.stream(baseMatchers), Arrays.stream(swaggerMatchers)).toArray(String[]::new)
+            )
             .permitAll()
             .anyRequest()
             .authenticated()
