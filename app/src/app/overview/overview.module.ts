@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FieldAlertModule } from '../components/field-alert/field-alert.module';
+import { ButtonModule } from '../components/button/button.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FieldAlertModule } from '../components/field-alert/field-alert.module';
     CommonModule,
     OverviewRoutingModule,
     ReactiveFormsModule,
-    FieldAlertModule
+    FieldAlertModule,
+    ButtonModule
   ],
   exports: [OverviewComponent]
 })

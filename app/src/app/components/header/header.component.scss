@@ -1,33 +1,33 @@
 @import '../../../vars.scss';
 
 .main-header {
-  margin: 2% $margin-sides;
   padding: 1.5%;
   background-color: $primary-color;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .nav-bar {
   display: flex;
   justify-content: space-between;
+  font-size: 20px;
+  padding: 10px;
 
   .nav-links {
     margin: 0;
     padding: 0;
     list-style: none;
+    text-decoration: none;
     display: flex;
     justify-content: flex-end;
 
     li {
       margin: 0 10px;
       padding: 5px;
-      background-color: gainsboro;
     }
 
     .logoutButton {
       color: blue;
       cursor: pointer;
-      text-decoration: underline;
     }
 
   }

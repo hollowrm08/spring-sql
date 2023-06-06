@@ -12,4 +12,8 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToDetails($event: any) : any {
+    console.log('test');
+  }
+
 }

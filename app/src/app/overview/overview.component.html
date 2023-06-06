@@ -1,9 +1,11 @@
 <div class="main-overview">
   <router-outlet></router-outlet>
-  <h2>AskIn</h2>
-
   <div>
-    <p>Bem vindo a plataforma!</p>
-    <p>O <i>AskIn</i> tem como objetivo conectar alunos e professores</p>
+    <h3>AskIn</h3>
+    <p>Com a missão de conectar alunos e professores, nossa plataforma proporciona conectividade...</p>
+    <app-button
+      content="Conheça nossa plataforma"
+      (action)="goToDetails($event)">
+    </app-button>
   </div>
 </div>

@@ -7,10 +7,11 @@ import { FooterModule } from './components/footer/footer.module';
 import { HeaderModule } from './components/header/header.module';
 import { AuthModule } from './auth/auth.module';
 import { CardModule } from './components/card/card.module';
+import { ButtonModule } from './components/button/button.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +20,8 @@ import { CardModule } from './components/card/card.module';
     FooterModule,
     HttpClientModule,
     AuthModule,
-    CardModule
+    CardModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

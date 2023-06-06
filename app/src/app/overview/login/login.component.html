@@ -2,17 +2,21 @@
   <h4>Entrar</h4>
   <form action="form login-form" [formGroup]="loginForm" (submit)="login()">
     <div class="form-group">
+      <label for="login"> Login </label>
       <input
         type="text"
+        id="login"
         placeholder="login"
         formControlName="login"
       >
     </div>
 
     <div class="form-group">
+      <label for="password"> Senha </label>
       <input
         type="password"
-        placeholder="senha"
+        id="password"
+        placeholder="*****"
         formControlName="password"
       >
     </div>
