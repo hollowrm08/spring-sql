@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OverviewComponent } from './screens/overview/overview.component';
 
 const routes: Routes = [
   {
@@ -9,10 +8,11 @@ const routes: Routes = [
     redirectTo: 'overview'
   },
   {
-    path: '',
-    component: OverviewComponent
+    path: 'overview',
+    loadChildren: () =>
+      import('./screens/overview/overview.module').then((m) => m.OverviewModule),
+    canLoad: []
   }
-
 ];
 
 @NgModule({

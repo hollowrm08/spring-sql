@@ -1,0 +1,33 @@
+@import '../../../../vars.scss';
+
+.login-container {
+  padding: 4% 0;
+  background-color: $background-color;
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-field {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+    gap: 10px;
+
+    label {
+      width: 15%;
+      text-align: right;
+    }
+
+    input {
+      width: 30%;
+      text-align: left;
+    }
+  }
+
+  .enabled {
+    cursor: pointer;
+  }
+}

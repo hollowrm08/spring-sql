@@ -1,0 +1,37 @@
+<div class="login-container">
+  <form [formGroup]="loginForm" class="login-form">
+    <div class="login-field">
+      <label for="user">Usuário</label>
+      <input
+        type="text"
+        name="user"
+        id="user"
+        placeholder="user"
+        formControlName="user"
+      >
+      <!-- <app-field-alert
+        [alertMessage]="'O campo deve ter mais de 4 caracteres'"
+        [condition]="loginForm.get('user')?.touched
+          && loginForm.get('user')?.errors?.['min']"
+      ></app-field-alert> -->
+    </div>
+    <div class="login-field">
+      <label for="password">Senha</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="****"
+        formControlName="password"
+      >
+    </div>
+    <div class="login-field">
+      <button
+        [disabled]="!loginForm.valid"
+        [ngClass]="loginForm.valid ? 'enabled' : ''"
+        (click)="login()"
+        class="form-button"
+      >Entrar</button>
+    </div>
+  </form>
+</div>

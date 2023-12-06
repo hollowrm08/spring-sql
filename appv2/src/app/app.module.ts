@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OverviewComponent } from './screens/overview/overview.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FieldAlertComponent } from './components/field-alert/field-alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OverviewComponent,
-    HeaderComponent
+    HeaderComponent,
+    FieldAlertComponent,
   ],
   imports: [
     BrowserModule,
