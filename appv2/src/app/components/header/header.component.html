@@ -1,9 +1,9 @@
 <header class="container">
   <div class="logo">
-    <h2 routerLink="/overview">AskIn</h2>
+    <h2 (click)="toHomePage()">AskIn</h2>
   </div>
   <nav class="sign-actions">
     <button>Cadastrar-se</button>
-    <button routerLink="/overview/login">Entrar</button>
+    <button (click)="toLoginPage()">Entrar</button>
   </nav>
 </header>

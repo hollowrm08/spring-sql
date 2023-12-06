@@ -11,7 +11,7 @@ export class FieldAlertComponent implements OnInit {
   public alertMessage = '';
 
   @Input()
-  public condition = false;
+  public hasError = false;
 
   constructor() { }
 

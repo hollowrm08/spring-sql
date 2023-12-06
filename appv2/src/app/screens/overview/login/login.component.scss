@@ -9,7 +9,7 @@
     flex-direction: column;
   }
 
-  .login-field {
+  .login-form-field {
     font-size: 18px;
     display: flex;
     justify-content: center;
@@ -17,13 +17,16 @@
     gap: 10px;
 
     label {
-      width: 15%;
+      width: 10%;
       text-align: right;
     }
 
-    input {
-      width: 30%;
+    .login-form-field-content {
+      width: 15%;
       text-align: left;
+      input {
+        width: 100%
+      }
     }
   }
 

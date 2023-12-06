@@ -1,31 +1,42 @@
 <div class="login-container">
   <form [formGroup]="loginForm" class="login-form">
-    <div class="login-field">
+    <div class="login-form-field">
       <label for="user">Usuário</label>
-      <input
-        type="text"
-        name="user"
-        id="user"
-        placeholder="user"
-        formControlName="user"
-      >
-      <!-- <app-field-alert
-        [alertMessage]="'O campo deve ter mais de 4 caracteres'"
-        [condition]="loginForm.get('user')?.touched
-          && loginForm.get('user')?.errors?.['min']"
-      ></app-field-alert> -->
+      <div class="login-form-field-content">
+        <input
+          type="text"
+          name="user"
+          id="user"
+          placeholder="user"
+          formControlName="user"
+        >
+        <div class="login-field-error">
+          <app-field-alert
+            [alertMessage]="'O campo é obrigatório'"
+            [hasError]="loginForm.get('user')?.touched
+              && loginForm.get('user')?.errors?.['required']"
+          ></app-field-alert>
+        </div>
+      </div>
     </div>
-    <div class="login-field">
+    <div class="login-form-field">
       <label for="password">Senha</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="****"
-        formControlName="password"
-      >
+      <div class="login-form-field-content">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="****"
+          formControlName="password"
+        >
+        <app-field-alert
+          [alertMessage]="'O campo é obrigatório'"
+          [hasError]="loginForm.get('password')?.touched
+            && loginForm.get('password')?.errors?.['required']"
+        ></app-field-alert>
+      </div>
     </div>
-    <div class="login-field">
+    <div class="login-form-field">
       <button
         [disabled]="!loginForm.valid"
         [ngClass]="loginForm.valid ? 'enabled' : ''"
